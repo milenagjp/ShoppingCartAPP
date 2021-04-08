@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<head>
+    <title>Products</title>
+    <meta charset="UTF-8"/>
+
+</head>
+<body>
+<p>List of products</p>
+
+<div th:if="${ not#lists.isEmpty(products)}">
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Product Name</th>
+            <th>Product Price</th>
+        </tr>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.productId}"></td>
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.price}"></td>
+            <td>
+                <button  onclick="foo()">ADD TO CART</button>
+            </td>
+        </tr>
+    </table>
+</div>
+<script>
+    function foo() {
+        const obj = {cartId: 100, productId: 2};
+        $.ajax({
+            type: "post",
+            url: "/api/v1/addProduct",
+            contentType: "application/json",
+            dataType:"json",
+            data: JSON.stringify(obj),
+            success: function(result) {
+                window.alert("Successfully inserted into cart!!")
+            },
+            error: function(result){
+                window.alert("ERROR")
+            }
+        });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Cart</title>
+    <meta charset="UTF-8"/>
+
+</head>
+<body>
+<p>List of products in cart</p>
+
+<div th:if="${ not#lists.isEmpty(cart)}">
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Product Name</th>
+            <th>Product Price</th>
+        </tr>
+        <tr th:each="product : ${cart}">
+            <td th:text="${product.productId}"></td>
+            <td th:text="${product.name}"></td>
+            <td th:text="${product.price}"></td>
+        </tr>
+    <tr>
+            <th> <a href="/api/v1/total/1" >CHECKOUT</a></th>
+    </tr>
+    </table>
+
+</div>
+</body>
+</html>

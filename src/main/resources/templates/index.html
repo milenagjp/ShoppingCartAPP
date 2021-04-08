@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Welcome to the Shopping Cart App!!</h1>
+<a href="/api/v1/products">
+    <img src="../static/images/product.jfif" th:src="@{/images/product.jfif}">
+</a>
+<!--th:href="@{/cart/{id}(id=${post.cart.id})}" call of cart with id-->
+<a href="/api/v1/cart/1">
+    <img src="../static/images/cart.png" th:src="@{/images/cart.png}" >
+</a>
+</body>
+</html>
